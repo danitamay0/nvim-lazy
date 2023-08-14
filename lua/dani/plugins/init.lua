@@ -1,7 +1,8 @@
-return {
-  "nvim-lua/plenary.nvim",
+return { 
+ 
+ "nvim-lua/plenary.nvim",
   "MunifTanjim/nui.nvim",
-  "kyazdani42/nvim-web-devicons",
+  --"kyazdani42/nvim-web-devicons",
   "jwalton512/vim-blade",
     {
       "rcarriga/nvim-notify",
@@ -93,13 +94,10 @@ return {
             gs.diffthis "~"
           end, { desc = "Diff This ~" })
           map("n", "<leader>gtd", gs.toggle_deleted, { desc = "Toggle Delete" })
-  
           -- Text object
           map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", { desc = "Select Hunk" })
         end,
       },
     },
 
-    
 }
-  

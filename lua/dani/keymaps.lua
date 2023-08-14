@@ -19,6 +19,7 @@ map('i', '<C-l>', '<right>', default_opts)
 
 map("n", "<leader>w", ":w<CR>", default_opts)
 map("n", "<leader>wa", ":wa<CR>", default_opts)
+map("n", "<leader>q", ":q<CR>", default_opts)
 -- nmap <Leader>wa :wa<CR>
 -- nmap <Leader>w :wa<CR>
 -- nmap <Leader>q :q<CR>

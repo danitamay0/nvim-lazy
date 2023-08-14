@@ -14,9 +14,12 @@ return {
     keys = {
       { "<leader>f", "<cmd>Telescope find_files<cr>", desc = "Recent" },
       { "<leader>b", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
-      { "<leader>g", "<cmd>Telescope live_grep<cr>", desc = "Workspace" },
+      { "<leader>s", "<cmd>Telescope live_grep<cr>", desc = "Workspace" },
+      { "<leader>sa", "<cmd>Telescope grep_string<cr>", desc = "Find Workspace" },
       { "<leader>o", "<cmd>Telescope oldfiles<cr>", desc = "Browser" },
-      { "<leader>ps", "<cmd>Telescope repo list<cr>", desc = "Search" },
+      { "<leader>gr", "<cmd>Telescope repo list<cr>", desc = "Repo List" },
+      { "<leader>gs", "<cmd>Telescope git_status<cr>", desc = "Git Status" },
+
       { "<leader>hs", "<cmd>Telescope help_tags<cr>", desc = "Search" },
       {
         "<leader>pp",
@@ -63,7 +66,15 @@ return {
             theme = "dropdown",
             previewer = false,
             hidden = true,
-            find_command = { "rg", "--files", "--hidden", "-g", "!.git" },
+           find_command = { "rg", "--files", "--hidden", "-g", "!.git" },
+--	    find_command = {
+--		"fd",
+--		".",
+--		"--type",
+--		"file",
+--		"--hidden",
+--		"--strip-cwd-prefix"
+--    		}
           },
           git_files = {
             theme = "dropdown",
