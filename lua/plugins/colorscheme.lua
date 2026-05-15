@@ -31,11 +31,19 @@ return {
         end,
     },
     {
-        "dracula/vim",
+      "Mofiqul/dracula.nvim",
         lazy = false,
         priority = 1000,
         config = function()
-            --vim.cmd[[colorscheme dracula]]
+            require("dracula").setup({
+                -- opciones:
+                transparent_bg = true,
+                italic_comment = true,
+                -- colors = { bg = "#282A36", fg = "#F8F8F2" },
+            })
+
+            -- activar el tema
+            vim.cmd.colorscheme("dracula")
         end,
     },
 
