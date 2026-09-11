@@ -1,38 +1,17 @@
 return {
   "nvim-treesitter/nvim-treesitter",
+  branch = "master",
   event = { "BufReadPre", "BufNewFile" },
+  build = ":TSUpdate",
   config = function()
     require("nvim-treesitter.configs").setup({
-      ensure_installed = { "lua", "python", "javascript", "typescript", "go", "rust", "php" }, -- Lista de lenguajes que quieres soportar
-      highlight = {
-        enable = true,
+      ensure_installed = {
+        "lua", "python", "javascript", "typescript", "go", "rust", "php",
+        "bash", "html", "css", "json", "yaml", "markdown", "markdown_inline",
       },
-      indent = {
-        enable = true,
-      },
-      folding = {
-        enable = true,
-      },
-      refactor = {
-        highlight_definitions = { enable = true },
-        highlight_current_scope = { enable = false },
-        smart_rename = {
-          enable = true,
-          keymaps = {
-            smart_rename = "grr",
-          },
-        },
-        navigation = {
-          enable = true,
-          keymaps = {
-            goto_definition = "gnd",
-            list_definitions = "gnD",
-            list_definitions_toc = "gO",
-            goto_next_usage = "<a-*>",
-            goto_previous_usage = "<a-#>",
-          },
-        },
-      },
+      auto_install = true,
+      highlight = { enable = true },
+      indent = { enable = true },
     })
   end,
 }

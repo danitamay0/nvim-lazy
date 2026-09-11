@@ -1,0 +1,11 @@
+layout {
+    // La parte de arriba: paneles divididos
+    pane split_direction="vertical" {
+        pane size="65%" name="Editor" command="nvim"
+        pane size="35%" name="Terminal"
+    }
+    // La parte de abajo: la barra compacta futurista
+    pane size=1 borderless=true {
+        plugin location="zellij:compact-bar"
+    }
+}

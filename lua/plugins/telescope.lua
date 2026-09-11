@@ -6,16 +6,21 @@ return {
 	{
 		"nvim-telescope/telescope.nvim",
 		event = "VeryLazy",
-		tag = "0.1.5",
+		branch = "0.1.x",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		config = function()
 			local telescope = require("telescope")
 			telescope.setup({
+				defaults = {
+					preview = {
+						treesitter = false,
+					},
+				},
 				pickers = {
 					find_files = {
-						hidden = true, -- 👈 Esto muestra archivos ocultos como .env
+						hidden = true,
 					},
-				},		
+				},
 				extensions = {
 					["ui-select"] = {
 						require("telescope.themes").get_dropdown({}),

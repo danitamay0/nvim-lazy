@@ -41,7 +41,18 @@ opt.iskeyword:append("-")
 
 -- Treesitter folding
 opt.foldmethod = "expr"       -- Usa 'expr' para el plegado basado en Treesitter
-opt.foldexpr = "nvim_treesitter#foldexpr()" -- Expresión de plegado
+opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 opt.foldenable = true         -- Habilita el plegado por defecto
 opt.foldlevel = 99            -- Evita que todo el código se colapse al abrir Neovim
-opt.foldlevelstart = 99
+opt.foldlevelstart = 99 -- test autoread
+
+-- Auto-reload files changed outside nvim
+opt.autoread = true
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" }, {
+  pattern = "*",
+  callback = function()
+    if vim.fn.mode() ~= "c" then
+      vim.cmd("checktime")
+    end
+  end,
+})

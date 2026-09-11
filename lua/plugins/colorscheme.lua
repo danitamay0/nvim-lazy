@@ -27,7 +27,7 @@ return {
             require("gruvbox").setup({
                 style = "dark",
             })
-             require("gruvbox").load()
+             -- require("gruvbox").load()
         end,
     },
     {

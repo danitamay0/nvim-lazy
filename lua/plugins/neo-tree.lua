@@ -1,10 +1,10 @@
 return {
     "nvim-neo-tree/neo-tree.nvim",
-    keys = { -- only load the plugin on these keymaps
-        { "<leader>b",      ":Neotree toggle <CR>" },
-        { "<leader>nb", ":Neotree buffers reveal float<CR>" },
-    },
+    cmd = "Neotree",
     branch = "v3.x",
+    init = function()
+        vim.g.neo_tree_remove_legacy_commands = 1
+    end,
     dependencies = {
         "nvim-lua/plenary.nvim",
         "nvim-tree/nvim-web-devicons",
@@ -13,15 +13,23 @@ return {
     config = function()
         require("neo-tree").setup({
             close_if_last_window = false,
+            event_handlers = {
+                {
+                    event = "file_opened",
+                    handler = function()
+                        require("neo-tree.command").execute({ action = "close" })
+                    end,
+                },
+            },
             popup_border_style = "rounded",
             enable_git_status = true,
-            enable_diagnostics = true,
+            enable_diagnostics = false,
             source_selector = {
                 winbar = false,
                 statusline = false,
             },
             filesystem = {
-                follow_current_file = true,
+                follow_current_file = { enabled = false },
                 filtered_items = {
                     visible = true,
                     show_hidden_count = true,
